@@ -216,3 +216,94 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# From Gemini******************************
+
+# ==========================================
+# 🐍 Python (Lambda & Streamlit)
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv
+venv
+ENV/
+env/
+
+# Streamlit local configuration
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# ==========================================
+# 📜 Terraform (IaC)
+# ==========================================
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files (CRITICAL: These contain sensitive database credentials/secrets)
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude all .tfvars vars files (Contains deployment-specific secrets)
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include override files you wish to add to source control if necessary
+# !override.tf
+
+# Include lock file for strict provider pinning
+!.terraform.lock.hcl
+
+# ==========================================
+# 🗄️ Database & Environment / OS
+# ==========================================
+# Local environment variables and secrets
+.env
+.env.local
+.env.*.local
+
+# SQL local dumps and logs
+*.sql.gz
+*.sql.bak
+.idea/
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
