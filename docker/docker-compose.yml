@@ -1,0 +1,30 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # 🖥️ Service 1: Client Front-End Dashboard Interface
+  streamlit-dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      # Directs client traffic loops to the mock engine container internal network path
+      - API_ENDPOINT=http://mock-api-gateway:8080/telemetry
+      - DB_CLUSTER_ARN=arn:aws:rds:us-east-1:123456789012:cluster:judgment-analytics-cluster
+      - DB_SECRET_ARN=arn:aws:secretsmanager:us-east-1:123456789012:secret:database-credentials
+      - AWS_DEFAULT_REGION=us-east-1
+      # Local development AWS credentials stubbing (keeps boto3 happy in localized mock sandboxes)
+      - AWS_ACCESS_KEY_ID=mock_key
+      - AWS_SECRET_ACCESS_KEY=mock_secret
+    depends_on:
+      - mock-api-gateway
+
+  # 🌐 Service 2: Simulated API Gateway Proxies
+  mock-api-gateway:
+    image: python:3.11-slim
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    command: bash -c "pip install flask && python mock_gateway.py"
